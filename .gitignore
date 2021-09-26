@@ -1,1 +1,8 @@
-node_modules
+.DS_Store
+.vs
+/build
+/dist
+
+/node_modules
+# misc
+.idea/
