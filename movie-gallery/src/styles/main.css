@@ -1,0 +1,29 @@
+@import 'fonts.css';
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.title-green {
+  color: green;
+}
+
+.go-back-btn {
+  box-shadow: 10px 5px 5px red;
+  padding: 10px 15px;
+  font-size: 18px;
+  background: blue;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.go-back-btn:hover {
+  box-shadow: 10px 5px 5px blue;
+  background: red;
+}
+
+.tessst-item {
+  color: red;
+}
