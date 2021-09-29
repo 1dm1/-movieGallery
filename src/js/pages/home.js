@@ -19,7 +19,7 @@ editMovieBtn.addEventListener('click', () => {
 })
 
 
-console.log('da');
+console.log('da-2');
 
 function createFilmCatalog() {
   api('GET','/movies')
