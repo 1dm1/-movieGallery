@@ -18,6 +18,9 @@ editMovieBtn.addEventListener('click', () => {
   window.location.href = routes.editMovie({ id: '123' })
 })
 
+
+console.log('da');
+
 function createFilmCatalog() {
   api('GET','/movies')
   .then(arrMovie => {
