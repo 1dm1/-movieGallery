@@ -1,29 +1,20 @@
 @import 'fonts.css';
 
 body {
+  margin: 0;
+  background: #7f7f7f;
   font-family: 'Roboto', sans-serif;
 }
 
-.title-green {
-  color: green;
+.header {
+  display: flex;
+  background: rgb(39 39 40);
+  margin-bottom: 50px;
 }
 
-.go-back-btn {
-  box-shadow: 10px 5px 5px red;
-  padding: 10px 15px;
-  font-size: 18px;
-  background: blue;
-  color: white;
-  border: 0;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.go-back-btn:hover {
-  box-shadow: 10px 5px 5px blue;
-  background: red;
-}
-
-.tessst-item {
-  color: red;
+.header_title {
+  font-size: 50px;
+  color: #8b8683;
+  margin: 0;
+  padding: 20px 10px;
 }
