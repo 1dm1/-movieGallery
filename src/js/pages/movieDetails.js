@@ -33,7 +33,6 @@ const createShortPost = (film) => {
   const wrapper = elementCreater({tag: 'div',class: 'film_block',child: [posterWrapper,blockInfo]})
   filmBlockEl.append(wrapper,wrapperOverview)
 }
-
 const genresBuild = (film) => {
   const arrBlockGenre = []
   film.genres.forEach(genr => {
