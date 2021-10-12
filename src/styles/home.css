@@ -1,7 +1,6 @@
 @import 'fonts.css';
 
 .film_catalog {
-
   display: flex;
   flex-wrap: wrap;
 }
@@ -40,9 +39,4 @@
 
 .film_date {
   margin-left: 100px;
-}
-
-
-.active {
-  box-shadow: -1px -1px 20px 6px red;
 }
