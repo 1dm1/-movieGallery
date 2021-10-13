@@ -1,4 +1,66 @@
+.container {
+  width: 900px;
+  margin: auto;
+}
+
+.wrapper_film {
+  width: 900px;
+  box-shadow: inset -1px 1px 12px 9px white;
+  padding: 30px;
+  background: rgb(191 191 191);
+}
+
+.film_block {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.poster_wrapper {
+  width: 380px;
+  margin-right: 20px;
+}
+
+.poster {
+  width: 100%;
+}
+
+.info_block {
+  position: relative;
+  width: 500px;
+  height: 600px;
+}
+
+.edit_icon {
+  width: 30px;
+  position: absolute;
+  cursor: pointer;
+  right: -10px;
+  top: -10px;
+}
+
+.wrapper_table {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 .title {
-  font-size: 50px;
-  color: red;
+  font-size: 20px;
+  padding-right: 25px;
+  width: 170px;
+}
+
+.wrapper_ganre {
+  width: 260px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.genre {
+  margin-right: 7px;
+}
+
+.wrapper_overview {
+  margin: 0 auto;
+  width: 900px;
 }
