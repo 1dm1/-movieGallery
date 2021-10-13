@@ -36,7 +36,8 @@ const doubleClickHandler = () => {
   })
 }
 
-console.log('test')
+console.log('test2')
+
 
 
 
