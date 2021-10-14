@@ -8,7 +8,7 @@ const params = getURLParams()
 
 goHomeBtn.addEventListener('click', () => redirect(ROUTE_NAMES.home))
 
-api(METHODS.get, API_CONFIGS.film(params.id)).then(film => {
+api(METHODS.get, API_CONFIGS.filmDetails(params.id)).then(film => {
   createPostDetails(film)
 })
 

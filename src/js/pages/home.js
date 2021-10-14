@@ -9,6 +9,7 @@ api(METHODS.get, API_CONFIGS.movies({ _limit: 10 })).then(arrFilms => {
 })
 
 const displayList = (arrFilms) => {
+  
   buildList(arrFilms)
   doubleClickHandler()
 }
@@ -21,7 +22,7 @@ const buildList = (arrFilms) => {
     const movieDateWrapper = elementCreator({tag: 'div',class: 'date_wrapper',child:[filmText,filmDate]})
     const wrapperInfoFilm = elementCreator({tag: 'div',class: 'film_info',child:[filmName,movieDateWrapper]})
     const filmImg = elementCreator({tag: 'img',class: 'film_img',src: film.poster})
-    const filmItem = elementCreator({tag: 'div',class: 'film_item', attribute: {data: film.id}, child: [filmImg,wrapperInfoFilm]})
+    const filmItem = elementCreator({tag: 'div',class: 'film_item', attribute: {id: film.id}, child: [filmImg,wrapperInfoFilm]})
     containerEl.append(filmItem)
   })
 }
@@ -29,7 +30,7 @@ const buildList = (arrFilms) => {
 const doubleClickHandler = () => {
   containerEl.addEventListener('dblclick',(e) => {
     document.querySelectorAll('.film_item').forEach(item => {
-      item.contains(e.target) ? redirect(ROUTE_NAMES.movieDetails,{id: item.getAttribute('data')}) : ''
+      item.contains(e.target) ? redirect(ROUTE_NAMES.movieDetails,{id: item.getAttribute('id')}) : ''
     })
   })
 }
