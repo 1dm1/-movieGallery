@@ -1,11 +1,10 @@
-import routes from '../routes.js'
+import { redirect, ROUTE_NAMES } from '../routes.js'
 import { getURLParams } from '../utils.js'
 
-const goHomeBtn = document.getElementById('go-home-btn')
+const goHomeBtn = document.querySelector('.go_home_btn')
 
 const params = getURLParams()
-console.log('params', params)
 
 goHomeBtn.addEventListener('click', () => {
-  window.location.href = routes.home
+  redirect(ROUTE_NAMES.home)
 })
