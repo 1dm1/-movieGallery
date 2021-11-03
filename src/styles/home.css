@@ -1,5 +1,23 @@
 @import 'fonts.css';
 
+.hide {
+  display: none;
+}
+
+/* poster */
+.item_wrap {
+  position: relative;
+  margin: 30px;
+}
+
+.item_wrap:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
 .film_catalog {
   display: flex;
   flex-wrap: wrap;
@@ -9,14 +27,9 @@
   box-shadow: inset 0px 20px 20px 20px white;
   cursor: pointer;
   position: relative;
-  margin: 30px;
   width: 300px;
   height: 550px;
   background: rgb(191 191 191);
-}
-
-.film_item:hover {
-  background: rgb(216 216 216);
 }
 
 .film_img {
@@ -39,4 +52,71 @@
 
 .film_date {
   margin-left: 100px;
+}
+
+.active {
+  box-shadow: 0px 0px 20px 5px black;
+}
+
+/* dots */
+
+.dots_wrap {
+  right: -40px;
+  margin: 5px;
+  position: absolute;
+  transition: 0.5s;
+}
+
+.dots_wrap:before {
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.dots {
+  cursor: pointer;
+  width: 35px;
+  filter: invert(1);
+}
+
+/* menu  */
+
+.menu_wrap {
+  z-index: 3;
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background-color: white;
+  width: 175px;
+  height: 125px;
+  transition: all 0.5s;
+}
+
+.menu_item:hover::before {
+  background: #00000061;
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 40px;
+}
+
+.menu_value {
+  padding: 10px;
+  z-index: 4;
+  font-size: 20px;
+  color: #525151;
+  font-family: monospace;
+}
+
+.icon {
+  z-index: -1;
+  padding: 10px;
+  filter: contrast(0.5);
+  position: absolute;
+  right: 8px;
+  width: 20px;
 }
