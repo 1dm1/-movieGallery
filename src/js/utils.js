@@ -21,7 +21,7 @@ export const templateCreator = (data) => {
   }
   if(data.child?.length) {
     data.child.forEach(item => {
-      tag.append(templateCreator(item))
+      tag.append(item.tag ? templateCreator(item) : item)
     })
   }
   return tag
