@@ -1,7 +1,8 @@
 @import 'fonts.css';
 
 .hide {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* poster */
@@ -64,7 +65,7 @@
   right: -40px;
   margin: 5px;
   position: absolute;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .dots_wrap:before {
@@ -92,7 +93,7 @@
   background-color: white;
   width: 175px;
   height: 125px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 .menu_item:hover::before {
@@ -119,4 +120,56 @@
   position: absolute;
   right: 8px;
   width: 20px;
+}
+
+/* question */
+
+.popup_wrap {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(106 102 102 / 80%);
+  position: fixed;
+  z-index: 3;
+}
+
+.popup_block {
+  z-index: 3;
+  font-family: monospace;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 100px;
+  background: white;
+  box-shadow: 0px 0px 20px 8px #ac1616;
+  transition: 0.5s all;
+}
+
+/* .popup_wrap:after {
+  background: #000;
+  position: absolute;
+  z-index: 100;
+} */
+
+.title {
+  margin: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.btn_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup_btn {
+  width: 100px;
+  height: 29px;
+  background: #000;
+  font-size: 21px;
+  color: white;
+  margin: 10px;
 }

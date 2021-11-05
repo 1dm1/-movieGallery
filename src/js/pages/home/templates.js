@@ -1,4 +1,41 @@
-import { isValidDate } from '../../utils.js'
+import { isValidDate,templateCreator } from '../../utils.js'
+import { BTN_ACTIONS } from './constants.js'
+
+export const POPUP = templateCreator({
+  tag: 'div',
+  class: 'popup_wrap hide',
+  child: [
+    {
+      tag: 'div',
+      class: 'popup_block',
+      child: [
+        { 
+        tag: 'div',
+        class: 'title',
+        content: 'Remove this movie?'
+        },
+        {
+          tag: 'div',
+          class: 'btn_wrap',
+          child: [
+            {
+              tag: 'buttom',
+              class: 'popup_btn cancel',
+              content: 'cancel'
+            },
+            {
+              tag: 'buttom',
+              class: 'popup_btn remove',
+              attribute: {'data-action': BTN_ACTIONS},
+              content: BTN_ACTIONS
+            }
+          ]
+        
+        }
+      ]
+    }
+  ]
+})
 
 export const MENU = {
   tag: 'div',
