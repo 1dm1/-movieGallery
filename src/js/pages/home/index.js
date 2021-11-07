@@ -1,11 +1,12 @@
 import { redirect,ROUTE_NAMES } from '../../routes.js'
-import { templateCreator } from '../../utils.js'
+import { templateCreator,createPopup } from '../../utils/index.js'
 import { api, METHODS,API_CONFIGS } from '../../api.js'
-import { MENU, DOTS, ITEM_FILMS, POPUP } from './templates.js'
-import { MENU_ACTIONS, HIDE_CLASS_NAME, BTN_ACTIONS} from './constants.js'
-import { elementVisible } from './utils.js'
+import { MENU, DOTS, ITEM_FILMS } from './templates.js'
+import { MENU_ACTIONS, HIDE_CLASS_NAME} from './constants.js'
+import { elementVisible } from '../home/utils.js'
 
 const containerEl = document.querySelector('.film_catalog')
+const rootEl = document.querySelector('.root')
 let currentId = null
 
 api(METHODS.get, API_CONFIGS.movies({ _limit: 10 })).then(arrFilms => {
@@ -29,12 +30,12 @@ const containerElClickHandler = () => {
       elementVisible({ className: '.dots_wrap', show: false, parent: prevSelectItem })
       elementVisible({ className: '.menu_wrap', show: false, parent: prevSelectItem })
     }
-
+    
     if (target.className.includes('item_wrap')) {
       target.classList.add('active')
       elementVisible({ className: '.dots_wrap', show: true, parent: target })
       prevSelectItem = target
-      currentId = target.getAttribute('id')
+      currentId = target.getAttribute('id') 
     }
   })
 }
@@ -46,34 +47,43 @@ const clickMenuHandler = ({ target }) => {
   elementVisible({ element: menuWrapBlock, show, parent: target })
 }
 
-const clickPopupHandler = ({ target }) => {
-  if(!target.className.includes('popup_btn')) return
-  elementVisible({ element: POPUP, show: false})
-  
-  const btnAttr = target.getAttribute('data-action')
-  if(btnAttr === BTN_ACTIONS) {
-    api(METHODS.delete, API_CONFIGS.filmDetails(currentId))
-    window.location.reload()
-  } 
-  document.body.style.overflow = ''
+const hidePopup = () => {
+  elementVisible({ className: '.popup_wrap', show: false, parent: rootEl})
+}
+const deletePopup = () => {
+  hidePopup()
+  api(METHODS.delete, API_CONFIGS.moviesId(currentId))
+  window.location.reload()
 }
 
-const onClickMenu = ({ target }) => {
+const onClickMenu = ({ target } , POPUP) => {
   const currentAction = target.textContent
   if (currentAction === MENU_ACTIONS.delete) {    
     elementVisible({ element: POPUP, show: true})
-    document.body.style.overflow = 'hidden'
   }
   const action = MENU_ACTIONS[currentAction]
   redirect(ROUTE_NAMES[action],{id: currentId})
 }
 
 const buildList = (arrFilms) => {
-  POPUP.addEventListener('click',clickPopupHandler)
+  const POPUP = createPopup({
+    title: 'Remove film',
+    subtitle: 'After deleting the film cannot be returned',
+    actions: [
+      {
+        content: 'cancel',
+        handler: hidePopup,
+      },
+      {
+        content: 'delete',
+        handler: deletePopup,
+      },
+    ],
+  })
   arrFilms.forEach((film) => {
     const dotsBlock = templateCreator(DOTS)
     const menuBlock = templateCreator(MENU)
-    menuBlock.addEventListener('click', onClickMenu)
+    menuBlock.addEventListener('click', (event) => onClickMenu(event, POPUP))
     dotsBlock.addEventListener('click', clickMenuHandler)
 
     const itemWrap = templateCreator(
@@ -86,7 +96,7 @@ const buildList = (arrFilms) => {
     )
     containerEl.append(itemWrap)
   })
-  containerEl.append(POPUP)
+  rootEl.append(POPUP)
 
   containerElDoubleClickHandler()
   containerElClickHandler()

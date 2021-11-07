@@ -13,8 +13,9 @@ export const METHODS = {
 
 export const API_CONFIGS = {
   movies: (params) => `/movies/${queryString(params)}}`,
-  filmDetails: (id) => `/movies/${id}`
+  moviesId: (id) => `/movies/${id}`
 }
+
 
 export function api (method, url, body = {}) {
   const data = {method}

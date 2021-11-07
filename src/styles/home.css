@@ -122,7 +122,7 @@
   width: 20px;
 }
 
-/* question */
+/* popup */
 
 .popup_wrap {
   top: 0;
@@ -134,42 +134,42 @@
 }
 
 .popup_block {
-  z-index: 3;
+  max-width: 400px;
+  padding: 10px;
   font-family: monospace;
   position: absolute;
   text-align: center;
   left: 50%;
   top: 20%;
   transform: translateX(-50%);
-  width: 300px;
-  height: 100px;
   background: white;
-  box-shadow: 0px 0px 20px 8px #ac1616;
+  box-shadow: 0px 0px 20px 8px #201515;
   transition: 0.5s all;
 }
 
-/* .popup_wrap:after {
-  background: #000;
-  position: absolute;
-  z-index: 100;
-} */
+.popup_title {
+  margin: 10px;
+  font-size: 40px;
+  color: black;
+}
 
-.title {
+.popup_subtitle {
   margin: 10px;
   font-size: 20px;
   color: black;
 }
 
-.btn_wrap {
+.popup_btn_wrap {
   display: flex;
   justify-content: space-between;
 }
 
 .popup_btn {
+  font-family: monospace;
   width: 100px;
-  height: 29px;
+  height: 31px;
   background: #000;
   font-size: 21px;
   color: white;
-  margin: 10px;
+  margin: 10px 20px;
 }

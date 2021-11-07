@@ -1,5 +1,5 @@
 import { redirect,ROUTE_NAMES } from '../../routes.js'
-import { getURLParams,templateCreator } from '../../utils.js'
+import { getURLParams,templateCreator } from '../../utils/index.js'
 import { api,METHODS,API_CONFIGS} from '../../api.js'
 import { POSTER ,TITLE, DATE, GENRE, OVERVIEW ,REFACT} from './templates.js'
 
@@ -9,7 +9,7 @@ const params = getURLParams()
 
 goHomeBtn.addEventListener('click', () => redirect(ROUTE_NAMES.home))
 
-api(METHODS.get, API_CONFIGS.filmDetails(params.id)).then(film => {
+api(METHODS.get, API_CONFIGS.moviesId(params.id)).then(film => {
   createPostDetails(film)
 })
 

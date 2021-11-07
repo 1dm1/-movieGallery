@@ -1,4 +1,4 @@
-import { isValidDate,templateCreator } from '../../utils.js'
+import { isValidDate,templateCreator } from '../../utils/index.js'
 import { BTN_ACTIONS } from './constants.js'
 
 export const POPUP = templateCreator({

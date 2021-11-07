@@ -1,5 +1,5 @@
 
-import { isValidDate, templateCreator } from '../../utils.js'
+import { isValidDate, templateCreator } from '../../utils/index.js'
 
 export const POSTER = (film) => ({
     tag: 'div',
