@@ -10,5 +10,3 @@ export const BLOCK_VISIBLE_ACTIONS = {
 }
 
 export const HIDE_CLASS_NAME = 'hide'
-
-export const BTN_ACTIONS = 'delete'
