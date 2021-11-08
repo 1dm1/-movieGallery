@@ -1,4 +1,21 @@
-import { isValidDate } from '../../utils/index.js'
+import { isValidDate,createPopup } from '../../utils/index.js'
+
+export const POPUP = (onCancel,onConfirm) => createPopup({
+  title: 'Remove film',
+  subtitle: 'After deleting the film cannot be returned',
+  actions: [
+    {
+      content: 'cancel',
+      handler: onCancel,
+    },
+    {
+      content: 'confirm',
+      handler: onConfirm,
+    },
+  ],
+  clickToWrap: onCancel
+})
+
 
 export const MENU = {
   tag: 'div',
@@ -7,6 +24,7 @@ export const MENU = {
     {
       tag: 'div',
       class: 'menu_item',
+      attribute: {data_action: 'delete'},
       child: [
         {
           tag: 'img',
@@ -23,6 +41,7 @@ export const MENU = {
     {
       tag: 'div',
       class: 'menu_item',
+      attribute: {data_action: 'edit'},
       child: [
         {
           tag: 'img',
@@ -39,6 +58,7 @@ export const MENU = {
     {
       tag: 'div',
       class: 'menu_item',
+      attribute: {data_action: 'details'},
       child: [
         {
           tag: 'img',

@@ -5,7 +5,7 @@ const getPopupTemplate = (data) => {
   const popupElements = {
     title: templateCreator({
       tag: 'div',
-      class: 'popup_title', // TODO popup_title
+      class: 'popup_title',
       content: title,
     }),
     subtitle: templateCreator({
@@ -61,8 +61,8 @@ export const createPopup = (data) => {
     buttons = actions.map(getActionBtn)
   }
   const popup = getPopupTemplate({ title, subtitle, buttons })
-  popup.addEventListener('click', (event) => {
-    // if !popup_block => remove hide
+  popup.addEventListener('click', ({ target }) => {
+    target.className === 'popup_wrap' && data.clickToWrap()
   })
 
   return popup
