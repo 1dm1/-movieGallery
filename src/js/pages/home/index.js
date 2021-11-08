@@ -1,7 +1,7 @@
 import { redirect,ROUTE_NAMES } from '../../routes.js'
 import { templateCreator,createPopup } from '../../utils/index.js'
 import { api, METHODS,API_CONFIGS } from '../../api.js'
-import { MENU, DOTS, ITEM_FILMS } from './templates.js'
+import { MENU, DOTS, ITEM_FILMS,POPUP } from './templates.js'
 import { MENU_ACTIONS, HIDE_CLASS_NAME} from './constants.js'
 import { elementVisible } from '../home/utils.js'
 
@@ -47,43 +47,31 @@ const clickMenuHandler = ({ target }) => {
   elementVisible({ element: menuWrapBlock, show, parent: target })
 }
 
-const hidePopup = () => {
+const onCancelPopup = () => {
   elementVisible({ className: '.popup_wrap', show: false, parent: rootEl})
 }
-const deletePopup = () => {
-  hidePopup()
+const onConfirmPopup = () => {
+  onCancelPopup()
   api(METHODS.delete, API_CONFIGS.moviesId(currentId))
   window.location.reload()
 }
 
-const onClickMenu = ({ target } , POPUP) => {
-  const currentAction = target.textContent
-  if (currentAction === MENU_ACTIONS.delete) {    
-    elementVisible({ element: POPUP, show: true})
+const onClickMenu = ({ target } , popupBlock) => {
+  const currentAction = target.getAttribute('data_action')
+  if (currentAction === MENU_ACTIONS.delete) {  
+    elementVisible({ element: popupBlock, show: true})
   }
   const action = MENU_ACTIONS[currentAction]
   redirect(ROUTE_NAMES[action],{id: currentId})
 }
 
 const buildList = (arrFilms) => {
-  const POPUP = createPopup({
-    title: 'Remove film',
-    subtitle: 'After deleting the film cannot be returned',
-    actions: [
-      {
-        content: 'cancel',
-        handler: hidePopup,
-      },
-      {
-        content: 'delete',
-        handler: deletePopup,
-      },
-    ],
-  })
+  const popupBlock = POPUP(onCancelPopup,onConfirmPopup)
+
   arrFilms.forEach((film) => {
     const dotsBlock = templateCreator(DOTS)
     const menuBlock = templateCreator(MENU)
-    menuBlock.addEventListener('click', (event) => onClickMenu(event, POPUP))
+    menuBlock.addEventListener('click', (event) => onClickMenu(event, popupBlock))
     dotsBlock.addEventListener('click', clickMenuHandler)
 
     const itemWrap = templateCreator(
@@ -96,7 +84,7 @@ const buildList = (arrFilms) => {
     )
     containerEl.append(itemWrap)
   })
-  rootEl.append(POPUP)
+  rootEl.append(popupBlock)
 
   containerElDoubleClickHandler()
   containerElClickHandler()
