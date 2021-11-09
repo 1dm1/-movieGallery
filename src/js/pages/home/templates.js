@@ -1,4 +1,5 @@
 import { isValidDate,createPopup } from '../../utils/index.js'
+import { MENU_ACTIONS } from './constants.js'
 
 export const POPUP = (onCancel,onConfirm) => createPopup({
   title: 'Remove film',
@@ -24,7 +25,7 @@ export const MENU = {
     {
       tag: 'div',
       class: 'menu_item',
-      attribute: {data_action: 'delete'},
+      attribute: {data_action: MENU_ACTIONS.delete},
       child: [
         {
           tag: 'img',
