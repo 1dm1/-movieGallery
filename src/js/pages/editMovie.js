@@ -1,5 +1,5 @@
 import { redirect, ROUTE_NAMES } from '../routes.js'
-import { getURLParams } from '../utils.js'
+import { getURLParams } from '../utils/index.js'
 
 const goHomeBtn = document.querySelector('.go_home_btn')
 

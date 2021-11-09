@@ -1,8 +1,13 @@
+import { createPopup as _createPopup } from './popupCreator/index.js'
+export const createPopup = _createPopup
+
 export const getURLParams = (key) => {
   const urlSearchParams = new URLSearchParams(window.location.search)
   return key ? urlSearchParams.get(key) : Object.fromEntries(urlSearchParams.entries())
 }
+
 export const templateCreator = (data) => {
+  
   let tag
   if(!data?.tag) return
   tag = document.createElement(data.tag)
@@ -31,3 +36,5 @@ export const isValidDate = (date) => {
   const checkDate = new Date(date)
   return `${checkDate}` !== 'Invalid Date' ? checkDate.toLocaleDateString() : ''
 }
+
+export const isObject = (data) => Boolean(typeof data === 'object' && Object.keys(data).length && !Array.isArray(data))

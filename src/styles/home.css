@@ -1,7 +1,8 @@
 @import 'fonts.css';
 
 .hide {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* poster */
@@ -64,7 +65,7 @@
   right: -40px;
   margin: 5px;
   position: absolute;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .dots_wrap:before {
@@ -92,7 +93,7 @@
   background-color: white;
   width: 175px;
   height: 125px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 .menu_item:hover::before {
@@ -119,4 +120,56 @@
   position: absolute;
   right: 8px;
   width: 20px;
+}
+
+/* popup */
+
+.popup_wrap {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(106 102 102 / 80%);
+  position: fixed;
+  z-index: 3;
+}
+
+.popup_block {
+  max-width: 400px;
+  padding: 10px;
+  font-family: monospace;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  background: white;
+  box-shadow: 0px 0px 20px 8px #201515;
+  transition: 0.5s all;
+}
+
+.popup_title {
+  margin: 10px;
+  font-size: 40px;
+  color: black;
+}
+
+.popup_subtitle {
+  margin: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.popup_btn_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup_btn {
+  font-family: monospace;
+  width: 100px;
+  height: 31px;
+  background: #000;
+  font-size: 21px;
+  color: white;
+  margin: 10px 20px;
 }
